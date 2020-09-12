@@ -9,7 +9,7 @@
 3. NavigationController 사용하여 화면전환(push)
 4. 화면전환용 객체 Segue 사용
 
-Project 1 에서는 위의 4가지 방식 중에 2번째 방식을 사용하였다.
+Project 1 에서는 위의 4가지 방식 중에 3번째 방식을 사용하였다.
 
 ```swift
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
