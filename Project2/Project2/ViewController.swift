@@ -18,12 +18,15 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score = 0
     var Answer = 0
+    var cnt = 0
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(scoreTapped))
         countries += ["estonia", "france", "germany", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
         btn1.layer.borderWidth  = 2
@@ -41,34 +44,59 @@ class ViewController: UIViewController {
         
         countries.shuffle()  // 리스트를 랜덤화 시킨다.
         Answer = Int.random(in: 0...2)
+        cnt+=1
         
         btn1.setImage(UIImage(named: countries[0]), for: .normal)
         btn2.setImage(UIImage(named: countries[1]), for: .normal)
         btn3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        title = countries[Answer].uppercased()
+        title = countries[Answer].uppercased() + " " + String(score)
+        
+        
     }
     
     
     @IBAction func btn1Aciton(_ sender: UIButton) {
         var title: String
+        var m: String = ""
         
         if sender.tag == Answer {
             title = "Correct"
             score += 1
         } else{
             title = "Wrong"
+            m = "That's the flag of \(countries[sender.tag].uppercased())!"
             score -= 1
         }
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        if(cnt<10){
+            m += "\nYour score is \(score)"
+        }else{
+            m += "\nYour final score is \(score)"
+        }
         
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        
+        
+        let ac = UIAlertController(title: title, message: m, preferredStyle: .alert)
+        
+        if(cnt<10){
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        }else {
+            ac.addAction(UIAlertAction(title: "Finish", style: .default))
+        }
+        
         
         present(ac, animated: true)
         
     }
     
+    
+    @objc func scoreTapped(){
+        
+        let vc = UIActivityViewController(activityItems: ["Score is ", String(score)], applicationActivities: [])
+        
+        present(vc, animated: true)
+    }
     
 }
 
