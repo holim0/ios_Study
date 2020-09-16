@@ -111,4 +111,5 @@ let ac = UIAlertController(title: title, message: m, preferredStyle: .alert)
 
 →  preferredStyle 은 .alert 방식과 .actionSheet 방식이 있다. 
 
+
 ### <Project3 - 2020/09/15>

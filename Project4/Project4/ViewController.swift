@@ -27,7 +27,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let url  = URL(string: "https://www.apple.com/kr/")!   // 새로운 url 생성
         
         webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
+        webView.allowsBackForwardNavigationGestures = true   // 뒤로 가기 해주는 것.
         
         
     }
