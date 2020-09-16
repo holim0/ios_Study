@@ -114,10 +114,46 @@ let ac = UIAlertController(title: title, message: m, preferredStyle: .alert)
 
 →  preferredStyle 은 .alert 방식과 .actionSheet 방식이 있다. 
 
-<<<<<<< HEAD
-=======
 </br>
->>>>>>> ba9f16d26fdedfca6b8f533ea8519e45facbc334
+
 
 ### <Project3 - 2020/09/15>
 
+
+[**About UIActivityViewController]  →  공유 및 이미지 저장 할 수 있는 기능.**
+
+- UIBarButtonItem
+
+```swift
+navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+```
+
+→ target 은 현재 class 인 self 를 가리키고 action 의 인자는 #selector 를 통해 shareTapped을 전달해준다. 
+
+- shareTapped 함수
+
+```swift
+@objc func shareTapped(){
+        
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("no image found")
+            return
+        }
+        
+        let vc = UIActivityViewController(activityItems: [image, title!], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
+```
+
+### <Project4 - 2020/09/16>
+
+- WebView
+
+```swift
+override func loadView() {
+        webView = WKWebView()  // webView 생성.
+        webView.navigationDelegate = self  // 웹 페이지의 발생을 현재 class에 알려준다는 의미.
+        view = webView // 현재 뷰를 웹 뷰로 할당.
+    }
+```
