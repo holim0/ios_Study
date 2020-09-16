@@ -9,6 +9,8 @@
 3. NavigationController 사용하여 화면전환(push)
 4. 화면전환용 객체 Segue 사용
 
+</br>
+
 Project 1 에서는 위의 4가지 방식 중에 3번째 방식을 사용하였다.
 
 ```swift
@@ -27,7 +29,7 @@ let fm = FileManager.default
         let path = Bundle.main.resourcePath!;
         let items = try! fm.contentsOfDirectory(atPath: path)
 ```
-
+</br>
 
 ### <Project 2 -2020/09/15>
 
@@ -39,6 +41,8 @@ btn1.setImage(UIImage(named: countries[0]), for: .normal)
 
 →  for: .normal 은 버튼의 표준 상태를 나타낼 때 사용된다. (UIImage 의 2번 째 인자)
 
+</br>
+
 ```swift
 countries += ["estonia", "france", "germany", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
 
@@ -48,6 +52,8 @@ countries.shuffle() // 리스트를 랜덤으로 정렬한다.
 
 shuffle 을 통해서 리스트를 랜덤화 할 수 있다. 
 
+</br>
+
 ```swift
 correctAnswer = Int.random(in: 0...2)
 
@@ -56,6 +62,7 @@ title = countries[correctAnswer].uppercased()  // 문자열을 다 대문자로 
 ```
 
 → Int.random(in: x...y) : x부터 y까지의 정수형 숫자를 랜덤하게 반환한다. 
+</br>
 
 - 각 이미지 뷰에는 tag 라는 value 가 존재하는데 이는 각 이미지 뷰를 판별할 때 사용될 수 있다.
 
@@ -129,6 +136,8 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action
 ```
 
 → target 은 현재 class 인 self 를 가리키고 action 의 인자는 #selector 를 통해 shareTapped을 전달해준다. 
+
+</br>
 
 - shareTapped 함수
 
