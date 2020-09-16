@@ -156,7 +156,7 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action
 ```
 </br>
 
-### <Project4 - 2020/09/16>
+### <Project4 - 2020/09/16> - 정리 필요
 
 - WebView
 
@@ -292,7 +292,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
 ```
 </br>
 
-### <Project -2020/09/17>
+### <Project5 -2020/09/17> - 정리 필요
 
 - **UITableViewController**
 
