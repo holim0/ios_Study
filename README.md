@@ -90,6 +90,7 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action
 
 → selector로 scoreTapped 를 전달하고 target은 현재 class 를 가리키는 self.
 
+</br>
 - UIAlertController
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/190fd7db-5597-4a74-93c8-497d384bf2ea/IMG_5C034C00D4E8-1.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/190fd7db-5597-4a74-93c8-497d384bf2ea/IMG_5C034C00D4E8-1.jpeg)
@@ -110,5 +111,7 @@ let ac = UIAlertController(title: title, message: m, preferredStyle: .alert)
 → addAction은 handler 를 통해 진행된다. 
 
 →  preferredStyle 은 .alert 방식과 .actionSheet 방식이 있다. 
+
+</br>
 
 ### <Project3 - 2020/09/15>
