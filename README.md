@@ -59,7 +59,7 @@ title = countries[correctAnswer].uppercased()  // 문자열을 다 대문자로 
 
 - 각 이미지 뷰에는 tag 라는 value 가 존재하는데 이는 각 이미지 뷰를 판별할 때 사용될 수 있다.
 
-<img width="253" alt="스크린샷 2020-09-16 오후 4 51 29" src="https://user-images.githubusercontent.com/48006103/93313613-ac927c80-f843-11ea-8f6e-c244b8c4e660.png">
+<center><img width="253" alt="스크린샷 2020-09-16 오후 4 51 29" src="https://user-images.githubusercontent.com/48006103/93313613-ac927c80-f843-11ea-8f6e-c244b8c4e660.png"></center>
 
 
 →  코드에서 나와 있듯이 sender.tag 를 통해서 이미지 뷰를 판단할 수 있다. 
