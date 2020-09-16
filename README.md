@@ -59,7 +59,8 @@ title = countries[correctAnswer].uppercased()  // 문자열을 다 대문자로 
 
 - 각 이미지 뷰에는 tag 라는 value 가 존재하는데 이는 각 이미지 뷰를 판별할 때 사용될 수 있다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/164bc878-0d07-421c-9c3e-ce6072b0ab56/_2020-09-16__4.51.29.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/164bc878-0d07-421c-9c3e-ce6072b0ab56/_2020-09-16__4.51.29.png)
+<img width="253" alt="스크린샷 2020-09-16 오후 4 51 29" src="https://user-images.githubusercontent.com/48006103/93313613-ac927c80-f843-11ea-8f6e-c244b8c4e660.png">
+
 
 →  코드에서 나와 있듯이 sender.tag 를 통해서 이미지 뷰를 판단할 수 있다. 
 
@@ -94,7 +95,7 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action
 
 - UIAlertController
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/190fd7db-5597-4a74-93c8-497d384bf2ea/IMG_5C034C00D4E8-1.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/190fd7db-5597-4a74-93c8-497d384bf2ea/IMG_5C034C00D4E8-1.jpeg)
+![IMG_5C034C00D4E8-1](https://user-images.githubusercontent.com/48006103/93313561-97b5e900-f843-11ea-9ca0-e55e6c931e1e.jpeg)
 
 ```swift
 let ac = UIAlertController(title: title, message: m, preferredStyle: .alert) 
