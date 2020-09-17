@@ -193,6 +193,8 @@ progressView = UIProgressView(progressViewStyle: .default)  // progress bar 새�
 
 ‼️ `addObserver()` 를 사용하면 무조건 `removeObserver()` 가 뒤에 따라 와야한다. 
 
+</br>
+
 ```swift
  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
@@ -203,6 +205,8 @@ progressView = UIProgressView(progressViewStyle: .default)  // progress bar 새�
 ```
 
 → `observeValue()` 를 무조건 call 해야 한다. (`addObserve()`를 한 뒤에)
+
+</br>
 
 ```swift
 func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -230,7 +234,9 @@ func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigatio
 
 (자세한 설명 :[https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
 
-### <Project5 -2020/09/17>   - 정리 필요
+</br>
+
+### <Project5 -2020/09/17>
 
 - **UITableViewController : 테이블 뷰에 추가 아이템을 추가하는 것에 대해.**
 
@@ -254,6 +260,8 @@ func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigatio
 
 → `[weak self, weak ac]`  :  weak, strong 에 대한 개념이 명확하지 않다. 다시 공부할 필요가 있다. 
 
+</br>
+
 ```swift
 usedWords.insert(answer, at: 0)  // 배열 맨 앞에 answer 를 추가 한다.
                     let indexPath = IndexPath(row: 0, section: 0)           // 테이블 뷰에 추가하는 애니메이션 효과를 준다.  // tableView.reloadData()를 해도 된다.
@@ -264,6 +272,8 @@ usedWords.insert(answer, at: 0)  // 배열 맨 앞에 answer 를 추가 한다.
 → 위 코드의 2, 3 번째 라인을 그냥  `tableView.reloadData()` 를 통해서 테이블 뷰를 갱신 시켜줘도 된다. 
 
 하지만 애니매이션적인 효과를 얻을 수 없다. 
+
+</br>
 
 ```swift
  func isReal (word: String) -> Bool{     // 단어가 아닌것.
@@ -279,6 +289,8 @@ usedWords.insert(answer, at: 0)  // 배열 맨 앞에 answer 를 추가 한다.
 → `UITextChecker()` : Apple 에서 제공해주는 class. 실제 단어가 존재하는지 없는지 판단한다. 
 
 → [https://developer.apple.com/documentation/swift/string/utf16view](https://developer.apple.com/documentation/swift/string/utf16view)
+
+</br>
 
 ### <Project6 - 2020/09/17> - 정리 필요
 
