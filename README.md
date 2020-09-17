@@ -39,7 +39,7 @@ let fm = FileManager.default
 btn1.setImage(UIImage(named: countries[0]), for: .normal)
 ```
 
-→  for: .normal 은 버튼의 표준 상태를 나타낼 때 사용된다. (UIImage 의 2번 째 인자)
+→  `for: .normal` 은 버튼의 표준 상태를 나타낼 때 사용된다. (UIImage 의 2번 째 인자)
 
 </br>
 
@@ -50,7 +50,7 @@ countries.shuffle() // 리스트를 랜덤으로 정렬한다.
 
 ```
 
-shuffle 을 통해서 리스트를 랜덤화 할 수 있다. 
+`shuffle` 을 통해서 리스트를 랜덤화 할 수 있다. 
 
 </br>
 
@@ -61,7 +61,7 @@ title = countries[correctAnswer].uppercased()  // 문자열을 다 대문자로 
 
 ```
 
-→ Int.random(in: x...y) : x부터 y까지의 정수형 숫자를 랜덤하게 반환한다. 
+→ `Int.random(in: x...y)` : x부터 y까지의 정수형 숫자를 랜덤하게 반환한다. 
 </br>
 
 - 각 이미지 뷰에는 tag 라는 value 가 존재하는데 이는 각 이미지 뷰를 판별할 때 사용될 수 있다.
@@ -69,7 +69,7 @@ title = countries[correctAnswer].uppercased()  // 문자열을 다 대문자로 
 <center><img width="253" alt="스크린샷 2020-09-16 오후 4 51 29" src="https://user-images.githubusercontent.com/48006103/93313613-ac927c80-f843-11ea-8f6e-c244b8c4e660.png"></center>
 
 
-→  코드에서 나와 있듯이 sender.tag 를 통해서 이미지 뷰를 판단할 수 있다. 
+→  코드에서 나와 있듯이 `sender.tag` 를 통해서 이미지 뷰를 판단할 수 있다. 
 
 ```swift
 @IBAction func btn1Aciton(_ sender: UIButton) {    // 버튼 액션 매소드
@@ -119,7 +119,7 @@ let ac = UIAlertController(title: title, message: m, preferredStyle: .alert)
 
 → addAction은 handler 를 통해 진행된다. 
 
-→  preferredStyle 은 .alert 방식과 .actionSheet 방식이 있다. 
+→  `preferredStyle` 은 `.alert` 방식과 `.actionSheet` 방식이 있다. 
 
 </br>
 
@@ -135,7 +135,7 @@ let ac = UIAlertController(title: title, message: m, preferredStyle: .alert)
 navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
 ```
 
-→ target 은 현재 class 인 self 를 가리키고 action 의 인자는 #selector 를 통해 shareTapped을 전달해준다. 
+→ target 은 현재 class 인 self 를 가리키고 action 의 인자는 `#selector` 를 통해 shareTapped을 전달해준다. 
 
 </br>
 
@@ -156,9 +156,9 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action
 ```
 </br>
 
-### <Project4 - 2020/09/16> - 정리 필요
+### <Project4 - 2020/09/16> 
 
-- WebView
+- **WebView**
 
 ```swift
 override func loadView() {
@@ -169,42 +169,7 @@ override func loadView() {
 ```
 
 ```swift
-//
-//  ViewController.swift
-//  Project4
-//
-//  Created by 이희제 on 2020/09/16.
-//  Copyright © 2020 이희제. All rights reserved.
-//
-
-import UIKit
-import WebKit
-
-class ViewController: UIViewController, WKNavigationDelegate {
-    
-    var webView: WKWebView!
-    var progressView : UIProgressView!
-    var websites = ["apple.com", "youtube.com"]
-    
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
-        
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) // 공간 차지 용도.
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        
-        let next = UIBarButtonItem(title : "next", style: .plain, target: webView, action: #selector(webView.goForward))
-        
-        let back = UIBarButtonItem(title: "back", style: .plain, target: webView, action: #selector(webView.goBack))
-        
-        progressView = UIProgressView(progressViewStyle: .default)  // 새로 만들기
+progressView = UIProgressView(progressViewStyle: .default)  // progress bar 새로 만들기
         progressView.sizeToFit() // 자동 채우기
         let progressButton = UIBarButtonItem(customView: progressView)
         
@@ -213,147 +178,69 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
-        
-        let url  = URL(string: "https://" + websites[0])!   // 새로운 url 생성
-        
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true   // 뒤로 가기 해주는 것.
-        
-        
-    }
-    
-    
-    @objc func openTapped(){
-        let ac = UIAlertController(title: "Open page... ", message: nil, preferredStyle: .actionSheet)
-        
-        
-        for website in websites
-        {
-            ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
-        }
-        
-        
-        
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        
-        present(ac, animated: true)
-        
-    }
-    
-    func openPage(action: UIAlertAction){
-        
-        guard let actionTitle = action.title else {return}
-        guard let url = URL(string: "http://" + actionTitle) else { return }
-        webView.load(URLRequest(url :url))
-        
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        title = webView.title
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        // 
+```
+
+→ `toolbarItems = [back, progressButton, spacer, refresh, next]` : toolbarItems 에 오른쪽의 버튼 아이템들을 차례 대로 추가해 주는 것이다. 
+
+→ `webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)` 
+ :  addObserver() 는 4가지의 인자를 가지고 있다.
+
+1. 누가 observer 인지
+2. 어떤 property 를 observe 할 것인지 (#keyPath 의 형태로 사용, #selector랑 비슷하다)
+3. 어떤 값을 원하는지
+4. context value
+
+‼️ `addObserver()` 를 사용하면 무조건 `removeObserver()` 가 뒤에 따라 와야한다. 
+
+```swift
+ override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress)
         }
     }
-    
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        let url = navigationAction.request.url // 현재 url
+```
+
+→ `observeValue()` 를 무조건 call 해야 한다. (`addObserve()`를 한 뒤에)
+
+```swift
+func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let url = navigationAction.request.url // 현재 url (url 은 optional type)
         
        
         if let host = url?.host {
             for website in websites{
-                if host.contains(website){
-                    decisionHandler(.allow)
-                    return
+                if host.contains(website){   // 호스트가 website 를 포함하면 
+                    decisionHandler(.allow)   // 화면을 로드 해준다.  
+                    return   // 그리고 바로 리턴
                 }
-                
-//                else{
-//                    let bc = UIAlertController(title: "Rejected!", message: "You access wrong website!", preferredStyle: .alert)
-//
-//
-//                    bc.addAction(UIAlertAction(title: "OK", style: .cancel))
-//                    present(bc, animated: true)
-//                }
-                
             }
         }
             
-        decisionHandler(.cancel)
+        decisionHandler(.cancel)  // host가 없다면 로드 하지 않는다. 
     
         
     }
-
-}
 ```
-</br>
 
-### <Project5 -2020/09/17> - 정리 필요
+→  예를 들어서 URL [http://www.example.com/index.html](http://www.example.com/index.html) 이 있으면 host는  [www.example.com](http://www.example.com/). 가 된다. 
 
-- **UITableViewController**
+→ decisionHandler 는 closure 이다.   
+
+(자세한 설명 :[https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview))
+
+### <Project5 -2020/09/17>   - 정리 필요
+
+- **UITableViewController : 테이블 뷰에 추가 아이템을 추가하는 것에 대해.**
 
 ```swift
-//
-//  ViewController.swift
-//  Project5
-//
-//  Created by 이희제 on 2020/09/16.
-//  Copyright © 2020 이희제. All rights reserved.
-//
-
-import UIKit
-
-class ViewController: UITableViewController {
-    
-    var allWords = [String]()
-    var usedWords = [String]()
-     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
-        
-        if let startWordURL = Bundle.main.url(forResource: "start", withExtension: "txt"){
-            if let startWords = try? String(contentsOf: startWordURL){
-                allWords = startWords.components(separatedBy: "\n")
-            }
-        }
-            
-        if allWords.isEmpty{
-            allWords = ["silkworm"]
-        }
-        
-        startGame()
-        
-        
-    }
-    
-    func startGame(){
-        title = allWords.randomElement()
-        usedWords.removeAll(keepingCapacity: true)
-        tableView.reloadData() // 다시 불러 온다.
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usedWords.count // 섹션의 row 개수
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Word", for: indexPath)
-        cell.textLabel?.text = usedWords[indexPath.row]
-        return cell
-    }
-    
-    @objc func promptForAnswer(){
+@objc func promptForAnswer(){
         let ac = UIAlertController(title: "EnterAnswer", message: nil, preferredStyle: .alert)
         ac.addTextField()  // 텍스트 필드 추가
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) {
-            [weak self, weak ac] _ in   //
+            [weak self, weak ac] _ in   // UI
             guard let answer = ac?.textFields?[0].text else {return}
             self?.submit(answer)
         }
@@ -361,64 +248,25 @@ class ViewController: UITableViewController {
         ac.addAction(submitAction)
         present(ac, animated: true)
     }
-    
-    func submit(_ answer : String){
-        let lowerAnswer = answer.lowercased()   // 소문자로 만든다.
-        
-        let errorTitle : String
-        let errorMessage :String
-        
-        
-        if isPossible(word: lowerAnswer){
-            if isOriginal(word: lowerAnswer){
-                if isReal(word: lowerAnswer){
-                    usedWords.insert(answer, at: 0)  // 배열 맨 앞에 answer 를 추가 한다.
+```
+
+→  `_ in`   same as `action in`  : `UIAlertAction` 에 대한 인자를 받아 들이겠다는 뜻이다. 
+
+→ `[weak self, weak ac]`  :  weak, strong 에 대한 개념이 명확하지 않다. 다시 공부할 필요가 있다. 
+
+```swift
+usedWords.insert(answer, at: 0)  // 배열 맨 앞에 answer 를 추가 한다.
                     let indexPath = IndexPath(row: 0, section: 0)           // 테이블 뷰에 추가하는 애니메이션 효과를 준다.  // tableView.reloadData()를 해도 된다.
                     tableView.insertRows(at: [indexPath], with: .automatic)
-                    
-                    return
-                }else{
-                    errorTitle = "Word not recognized"
-                    errorMessage = "You can't just make them up, you know!"
-                }
-            }else{
-                errorTitle = "Word already used"
-                errorMessage = "Be more original"
-            }
-        }else{
-            
-            guard let title = title else {return}
-            errorTitle = "Word not possible"
-            errorMessage = "You can't spell that word from \(title.lowercased())."
-        }
-        
-        
-        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style : .default))
-        
-        present(ac, animated: true)
-        
-    }
-    
-    func isPossible (word: String) -> Bool{      // 조합 할 수 있는지 판단.
-        guard var tempWord = title?.lowercased() else {return false}
-        
-        for letter in word{  // title 에 있는 단어와 비교하는 반복문이다.
-            if let position = tempWord.firstIndex(of: letter){
-                tempWord.remove(at: position)
-            }else{
-                return false
-            }
-        }
-        
-        return true
-    }
-    
-    func isOriginal(word: String) -> Bool{     // 단어가 이미 사용되었는지 판단.
-        return !usedWords.contains(word)
-    }
-    
-    func isReal (word: String) -> Bool{     // 단어가 아닌것.
+
+```
+
+→ 위 코드의 2, 3 번째 라인을 그냥  `tableView.reloadData()` 를 통해서 테이블 뷰를 갱신 시켜줘도 된다. 
+
+하지만 애니매이션적인 효과를 얻을 수 없다. 
+
+```swift
+ func isReal (word: String) -> Bool{     // 단어가 아닌것.
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)     // 진짜 존재하는 단어인지 판단 해준다. 
         
@@ -426,7 +274,14 @@ class ViewController: UITableViewController {
         
         return misspelledRange.location == NSNotFound
     }
-
-}
 ```
 
+→ `UITextChecker()` : Apple 에서 제공해주는 class. 실제 단어가 존재하는지 없는지 판단한다. 
+
+→ [https://developer.apple.com/documentation/swift/string/utf16view](https://developer.apple.com/documentation/swift/string/utf16view)
+
+### <Project6 - 2020/09/17> - 정리 필요
+
+- AutoLayOut
+
+## Closure 에 대한 공부와 정리 필요.

@@ -43,6 +43,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
         
+        
         let url  = URL(string: "https://" + websites[0])!   // 새로운 url 생성
         
         webView.load(URLRequest(url: url))
@@ -78,6 +79,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url :url))
         
     }
+    
+    
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
