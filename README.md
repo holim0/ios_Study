@@ -296,4 +296,21 @@ usedWords.insert(answer, at: 0)  // 배열 맨 앞에 answer 를 추가 한다.
 
 - AutoLayOut
 
+
+
+</br>
+
+### <Project7 - 2020/09/22>
+
+- Json parsing
+
+
+
+
+
+</br>
+
 ## Closure 에 대한 공부와 정리 필요.
+
+## try? 에 관한 것도 공부와 정리 필요.  
+
