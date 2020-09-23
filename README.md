@@ -14,7 +14,7 @@
 
 </br>
 
-<center>
+
 ### 📚공부 기록지
 
 |     📅DATE      |          Tags          |                            📂Files                            |
