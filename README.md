@@ -2,6 +2,8 @@
 
 ### <Project 1-2020/09/12>
 
+[:link:](https://github.com/holim0/ios_Study/blob/master/README_Directory/20200912.md)
+
 - 화면 전환 방식
 
 1. ViewController의 view를 바꿔치기
