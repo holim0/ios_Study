@@ -14,6 +14,8 @@
 
 </br>
 
+<center>
+
 ### 📚공부 기록지
 
 |     📅DATE      |          Tags          |                            📂Files                            |
@@ -25,4 +27,6 @@
 | **2020/09/22** |      **Project7**      | [:link:](https://github.com/holim0/ios_Study/blob/master/README_Directory/20200922.md) |
 
 
+</center>
 
+</br>
